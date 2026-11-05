@@ -1,0 +1,27 @@
+{
+  "name": "companion-ai",
+  "version": "1.0.0",
+  "description": "CompanionAI — Elderly-friendly AI Desktop Assistant",
+  "main": "frontend/main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "setup-backend": "cd backend && python3 -m venv venv && venv/bin/pip install -r requirements.txt"
+  },
+  "dependencies": {
+    "electron": "^32.0.0"
+  },
+  "devDependencies": {
+    "electron-builder": "^24.0.0"
+  },
+  "build": {
+    "appId": "com.companionai.app",
+    "productName": "CompanionAI",
+    "directories": { "output": "dist" },
+    "files": ["frontend/**", "backend/**"],
+    "extraResources": [{ "from": "backend", "to": "backend" }],
+    "mac": { "category": "public.app-category.productivity" },
+    "win": { "target": "nsis" },
+    "linux": { "target": "AppImage" }
+  }
+}
